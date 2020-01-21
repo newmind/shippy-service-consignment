@@ -4,15 +4,16 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+
 	"github.com/micro/go-micro"
 	pb "github.com/newmind/shippy-service-consignment/proto/consignment"
 	vesselProto "github.com/newmind/shippy-service-vessel/proto/vessel"
-	"log"
-	"os"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
-	defaultHost = "mongodb://localhost:32773"
+	defaultHost = "mongodb://localhost:27017"
 )
 
 func main() {

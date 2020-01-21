@@ -3,9 +3,11 @@ package main
 
 import (
 	"context"
+
 	pb "github.com/newmind/shippy-service-consignment/proto/consignment"
 	vesselProto "github.com/newmind/shippy-service-vessel/proto/vessel"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 type handler struct {
@@ -18,6 +20,7 @@ type handler struct {
 // argument, these are handled by the gRPC server.
 func (s *handler) CreateConsignment(ctx context.Context, req *pb.Consignment, res *pb.Response) error {
 
+	log.Info(req)
 	// Here we call a client instance of our vessel service with our consignment weight,
 	// and the amount of containers as the capacity value
 	vesselResponse, err := s.vesselClient.FindAvailable(ctx, &vesselProto.Specification{
