@@ -2,6 +2,8 @@ module github.com/newmind/shippy-service-consignment
 
 go 1.12
 
+replace github.com/newmind/shippy-service-consignment => ./
+
 require (
 	github.com/golang/groupcache v0.0.0-20191227052852-215e87163ea7 // indirect
 	github.com/golang/protobuf v1.3.2
