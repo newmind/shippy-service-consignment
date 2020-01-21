@@ -1,10 +1,6 @@
 build:
 	protoc -I. --go_out=plugins=micro:. proto/consignment/consignment.proto
+	docker build -t shippy-service-consignment .
 
-	# protoc -I. \
-	# 	--go_out=plugins=micro:$(GOPATH)/src/github.com/newmind/shippy/vessel-service \
-	# 	proto/vessel/vessel.proto
-	# docker build -t vessel-service .
-
-# run:
-# 	docker run -p 50052:50051 -e MICRO_SERVER_ADDRESS=:50051 -e MICRO_REGISTRY=mdns vessel-service
+run:
+	docker run --rm -p 50051:50051 -e MICRO_SERVER_ADDRESS=:50051 -e MICRO_REGISTRY=mdns shippy-service-consignment
